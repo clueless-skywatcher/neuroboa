@@ -4,8 +4,8 @@ from neuroboa.constants import *
 
 import numpy as np
 
-from tqdm import tqdm as Tqdm
-from tqdm.notebook import tqdm as TqdmNotebook
+from tqdm import trange
+from tqdm.notebook import trange as trange_notebook
 
 class NN():
     def __init__(self, layers = []):
@@ -53,9 +53,9 @@ class NN():
         rng = range(epochs)
 
         if show_progress == TQDM_TERMINAL:
-            rng = Tqdm(range(epochs))
+            rng = trange(epochs)
         elif show_progress == TQDM_NOTEBOOK:
-            rng = TqdmNotebook(range(epochs))
+            rng = trange_notebook(epochs)
         
         self.loss_list = []
 
@@ -66,6 +66,10 @@ class NN():
             grad = loss.gradient(y[batch], pred)
             self._backward(grad)
             self.loss_list.append(epoch_loss)
+
+            if show_progress != NO_PBAR:
+                rng.set_description(f"Epoch: {epoch + 1}")
+                rng.refresh()
             
     def predict(self, inputs):
         return self._forward(inputs)
