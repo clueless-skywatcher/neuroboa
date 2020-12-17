@@ -7,6 +7,18 @@ class ReLU(BaseFunction):
         return np.maximum(0, x)
 
     def gradient(self, grad):
-        grad[grad <= 0] = 0
-        grad[grad > 0] = 1
-        return grad
+        return np.where(grad >= 0, 1, 0)
+
+class ParamReLU(BaseFunction):
+    def __init__(self, alpha = 0.01):
+        self.alpha = alpha
+
+    def forward(self, x):
+        return np.minimum(0, x) * self.alpha + np.maximum(0, x)
+
+    def gradient(self, grad):
+        return np.where(grad >= 0, 1, self.alpha)
+
+class LeakyReLU(ParamReLU):
+    def __init__(self):
+        super().__init__(alpha = 0.01)
