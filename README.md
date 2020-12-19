@@ -6,5 +6,5 @@ Inspired from:
 - ML from Scratch: https://github.com/eriklindernoren/ML-From-Scratch/
 
 Requires:
-NumPy - For matrix calculations
-Tqdm - For showing progress in training the network
+- NumPy - For matrix calculations
+- Tqdm - For showing progress in training the network
