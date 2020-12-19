@@ -13,3 +13,6 @@ class Layer():
 
     def _set_optimizer(self, optimizer):
         self.optimizer = optimizer
+
+    def _overview():
+        raise NotImplementedError()

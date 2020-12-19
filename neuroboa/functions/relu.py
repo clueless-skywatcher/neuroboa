@@ -19,6 +19,9 @@ class ParamReLU(BaseFunction):
     def gradient(self, grad):
         return np.where(grad >= 0, 1, self.alpha)
 
+    def __str__(self):
+        return f"{self.__class__.__name__}({self.alpha})"
+
 class LeakyReLU(ParamReLU):
     def __init__(self):
         super().__init__(alpha = 0.01)

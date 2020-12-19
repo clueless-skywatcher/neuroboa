@@ -14,3 +14,6 @@ class Activation(Layer):
 
     def output_shape(self):
         return self.input_shape
+
+    def _overview(self):
+        return [self.__class__.__name__, str(self.func)]

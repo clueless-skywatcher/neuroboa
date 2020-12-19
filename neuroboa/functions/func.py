@@ -12,3 +12,6 @@ class BaseFunction():
 
     def gradient(self, grad):
         raise NotImplementedError()
+
+    def __str__(self):
+        return self.__class__.__name__

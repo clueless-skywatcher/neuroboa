@@ -4,6 +4,8 @@ from neuroboa.constants import *
 
 import numpy as np
 
+from terminaltables import AsciiTable
+
 from tqdm import trange
 from tqdm.notebook import trange as trange_notebook
 
@@ -57,7 +59,9 @@ class NN():
         elif show_progress == TQDM_NOTEBOOK:
             rng = trange_notebook(epochs)
         
-        self.loss_list = []
+        self.loss_list = np.array([], dtype='float32')
+
+        epoch_loss = 0.0
 
         for epoch in rng:
             batch = np.random.choice(range(len(X)), size = batch_size, replace = True)
@@ -65,8 +69,7 @@ class NN():
             epoch_loss = loss.loss(y[batch], pred)
             grad = loss.gradient(y[batch], pred)
             self._backward(grad)
-            self.loss_list.append(epoch_loss)
-
+            self.loss_list = np.append(self.loss_list, epoch_loss)
             if show_progress != NO_PBAR:
                 rng.set_description(f"Epoch: {epoch + 1}")
                 rng.refresh()
@@ -78,6 +81,20 @@ class NN():
         if plot:
             print("Plot: True")
         return self.loss_list
+
+    def overview(self):
+        print("Layers:")
+        overview = []
+        for layer in self.layers:
+            overview.append(layer._overview())
+
+        table = AsciiTable(overview)
+        table.inner_heading_row_border = False
+
+        print(table.table)
+
+
+
 
 
 

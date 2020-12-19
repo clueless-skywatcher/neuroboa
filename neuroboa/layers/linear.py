@@ -19,6 +19,8 @@ class Dense(Layer):
         }
 
     def forward(self, x):
+        if len(self.wts) == 0:
+            self._precompute()
         self.input = x
         return x.dot(self.wts["W"]) + self.wts["b"]
 
@@ -41,3 +43,6 @@ class Dense(Layer):
     
     def output_shape(self):
         return (self.neurons, )
+
+    def _overview(self):
+        return [self.__class__.__name__, self.neurons, self.input_shape]
