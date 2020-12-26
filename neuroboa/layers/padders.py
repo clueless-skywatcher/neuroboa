@@ -4,7 +4,8 @@ import numpy as np
 
 class Padder2D(Layer):
     """
-    Implements a Padding layer to pad values during data forwarding
+    Implements a Padding layer to pad 2 dimensional values during 
+    data forwarding
 
     Params:
     ---------------------------------------

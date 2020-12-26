@@ -1,10 +1,6 @@
-from keras.metrics import binary_crossentropy
-from neuroboa.losses import BinaryCrossEntropy
+from neuroboa.layers import Conv1D
 
 import numpy as np
 
-y_true = [[0, 1, 0], [0, 0, 1]]
-y_pred = [[0.05, 0.95, 0], [0.1, 0.8, 0.1]]
-
-print(binary_crossentropy(y_true, y_pred).numpy())
-print(BinaryCrossEntropy().loss(np.array(y_true), np.array(y_pred)))
+conv = Conv1D(filter_ = np.array([1, 1, 1]), stride=2, padding="same")
+print(conv._conv_1dim(np.array([1, 2, 3, 4, 5, 6, 7])))
