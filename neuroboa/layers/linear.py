@@ -6,6 +6,27 @@ import math
 import copy
 
 class Dense(Layer):
+    """
+    Implements the Dense (or linear) layer for output calculation.
+    Dense means that the layer has some units called neurons which help
+    in training the weights of the model.
+
+    The forward function of Dense layer implements the operation
+    y = w^T * x + b
+
+    Optimizers are applied in the backward function itself
+
+    Params:
+    ------------------
+    neurons: int 
+        The number of neurons you want to train the layer
+
+    input_shape: Tuple
+        Input dimension (or number of features in your dataset).
+        This is absolutely needed to be passed if this is the first layer of your
+        network. If its not the first layer, the input shape is inferred from the 
+        previous layer itself.
+    """
     def __init__(self, neurons, input_shape = None):
         self.neurons = neurons
         self.input_shape = input_shape

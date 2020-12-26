@@ -8,5 +8,5 @@ setuptools.setup(
     description = "A neural network framework written from scratch in Python, using only NumPy",
     packages = setuptools.find_packages(),
     python_requires = ">=3.5",
-    install_requires = ["numpy", "tqdm"]
+    install_requires = ["numpy", "tqdm", "terminaltables"]
 )
