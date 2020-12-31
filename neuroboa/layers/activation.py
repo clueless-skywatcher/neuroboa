@@ -5,7 +5,7 @@ class Activation(Layer):
         self.func = func
         self.input_shape = None
 
-    def forward(self, x):
+    def forward(self, x, training = True):
         self.input = x
         return self.func.forward(x)
 

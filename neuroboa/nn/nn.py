@@ -13,9 +13,9 @@ class NN():
     def __init__(self, layers = []):
         self.layers = layers
         
-    def _forward(self, x):
+    def _forward(self, x, training = True):
         for layer in self.layers:
-            x = layer.forward(x)
+            x = layer.forward(x, training)
         return x
 
     def _backward(self, grad):
@@ -75,7 +75,7 @@ class NN():
                 rng.refresh()
             
     def predict(self, inputs):
-        return self._forward(inputs)
+        return self._forward(inputs, training = False)
 
     def get_loss_list(self, plot = True):
         if plot:

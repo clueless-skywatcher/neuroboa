@@ -7,7 +7,7 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 
 from neuroboa.nn import NN
-from neuroboa.layers import Dense, Activation
+from neuroboa.layers import Dense, Activation, Dropout
 from neuroboa.functions import ReLU, Softmax, Tanh
 from neuroboa.losses import BinaryCrossEntropy, SoftmaxCrossEntropy
 from neuroboa.optims import Adam
@@ -25,9 +25,10 @@ train_dataset = datasets.MNIST(root = 'dataset/', train = True, transform = tran
 test_dataset = datasets.MNIST(root = 'dataset/', train = False, transform = transforms.ToTensor(), download = False)
 
 nn = NN([
-    Dense(170, input_shape = (784,)),
+    Dense(170, input_shape = (784,), initializer="glorot_normal"),
     Activation(Tanh()),
-    Dense(10),
+    Dropout(0.9),
+    Dense(10, initializer="glorot_normal"),
     Activation(Softmax())
 ])
 

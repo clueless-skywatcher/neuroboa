@@ -5,7 +5,7 @@ class Layer():
         self.input_shape = None
         pass
 
-    def forward(self, x):
+    def forward(self, x, training = True):
         raise NotImplementedError()
 
     def backward(self, grad):
