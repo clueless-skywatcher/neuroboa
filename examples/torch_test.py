@@ -8,8 +8,8 @@ import torchvision.transforms as transforms
 
 from neuroboa.nn import NN
 from neuroboa.layers import Dense, Activation
-from neuroboa.functions import ReLU, Softmax
-from neuroboa.losses import BinaryCrossEntropy
+from neuroboa.functions import ReLU, Softmax, Tanh
+from neuroboa.losses import BinaryCrossEntropy, SoftmaxCrossEntropy
 from neuroboa.optims import Adam
 from neuroboa.constants import TQDM_TERMINAL
 
@@ -26,7 +26,7 @@ test_dataset = datasets.MNIST(root = 'dataset/', train = False, transform = tran
 
 nn = NN([
     Dense(170, input_shape = (784,)),
-    Activation(ReLU()),
+    Activation(Tanh()),
     Dense(10),
     Activation(Softmax())
 ])
@@ -45,7 +45,7 @@ y_t = test_dataset.targets.numpy().reshape(-1, 1)
 y_tr1 = one_hot.fit_transform(y_tr).toarray()
 y_t1 = one_hot.fit_transform(y_t).toarray()
 
-nn.fit(X_tr, y_tr1, epochs = 1000, batch_size = 64, loss = BinaryCrossEntropy(), optimizer = Adam(lr = 0.001), show_progress = TQDM_TERMINAL)
+nn.fit(X_tr, y_tr1, epochs = 500, batch_size = 64, loss = BinaryCrossEntropy(), optimizer = Adam(lr = 0.001), show_progress = TQDM_TERMINAL)
 preds = np.round(nn.predict(X_t))
 
 total = len(preds)

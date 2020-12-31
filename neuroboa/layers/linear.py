@@ -1,4 +1,5 @@
 from .layer import Layer
+from ..initializers import *
 
 import numpy as np
 
@@ -27,15 +28,24 @@ class Dense(Layer):
         network. If its not the first layer, the input shape is inferred from the 
         previous layer itself.
     """
-    def __init__(self, neurons, input_shape = None):
+
+    _INITIALIZERS_DICT = {
+        "uniform" : UniformInitializer,
+        "glorot_normal" : GlorotNormalInitializer,
+        "glorot_uniform" : GlorotUniformInitializer,
+        "he_normal" : HeNormalInitializer,
+        "he_uniform" : HeUniformInitializer
+    }
+
+    def __init__(self, neurons, input_shape = None, initializer = "he_uniform"):
         self.neurons = neurons
         self.input_shape = input_shape
         self.wts = {}
+        self.initializer = initializer
 
     def _precompute(self):
-        limit = 1 / np.sqrt(self.input_shape[0])
         self.wts = {
-            "W" : np.random.uniform(-limit, limit, (self.input_shape[0], self.neurons)),
+            "W" : self._INITIALIZERS_DICT[self.initializer](self.input_shape[0], self.neurons).initialize(),
             "b" : np.zeros((1, self.neurons))
         }
 
