@@ -46,7 +46,7 @@ y_t = test_dataset.targets.numpy().reshape(-1, 1)
 y_tr1 = one_hot.fit_transform(y_tr).toarray()
 y_t1 = one_hot.fit_transform(y_t).toarray()
 
-nn.fit(X_tr, y_tr1, epochs = 500, batch_size = 64, loss = BinaryCrossEntropy(), optimizer = Adam(lr = 0.001), show_progress = TQDM_TERMINAL)
+nn.fit(X_tr, y_tr1, epochs = 1200, batch_size = 64, loss = BinaryCrossEntropy(), optimizer = Adam(lr = 0.001), show_progress = TQDM_TERMINAL)
 preds = np.round(nn.predict(X_t))
 
 total = len(preds)

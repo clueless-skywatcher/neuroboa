@@ -92,10 +92,4 @@ class NN():
         table.inner_heading_row_border = False
 
         print(table.table)
-
-
-
-
-
-
         

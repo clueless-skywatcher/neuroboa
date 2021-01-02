@@ -22,15 +22,15 @@ class Dense(Layer):
     neurons: int 
         The number of neurons you want to train the layer
 
-    input_shape: Tuple
+    input_shape: tuple
         Input dimension (typically the number of features in your dataset).
         This is absolutely needed to be passed if this is the first layer of your
         network. If its not the first layer, the input shape is inferred from the 
         previous layer itself.
     
     initializer: str
-        Specifies what initialization technique is to be applied on the weights. Can
-        be any of the following:
+        Specifies what initialization technique is to be applied on the weights. 
+        Can be any of the following:
             - uniform
             - glorot_normal
             - glorot_uniform
