@@ -1,6 +1,6 @@
 from .func import BaseFunction
 
-class LinearFunction(BaseFunction)
+class LinearFunction(BaseFunction):
     def __init__(self, a = 1.0):
         self.a = a
     

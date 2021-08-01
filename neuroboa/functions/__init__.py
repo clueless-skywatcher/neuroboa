@@ -6,3 +6,4 @@ from .elu import *
 from .swish import *
 from .softplus import *
 from .softmax import *
+from .linearfunc import *
