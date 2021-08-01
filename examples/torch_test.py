@@ -58,3 +58,5 @@ for pred, y in zip(preds, y_t1):
         correct += 1
 
 print(f"Accuracy: {float(correct) * 100 / total}%")
+
+nn.overview()
