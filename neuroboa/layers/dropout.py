@@ -1,6 +1,6 @@
-from .layer import Layer
-
 import numpy as np
+
+from neuroboa.layers.layer import Layer
 
 class Dropout(Layer):
     def __init__(self, keep = 0.8):

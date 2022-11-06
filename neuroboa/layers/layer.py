@@ -1,4 +1,15 @@
+from neuroboa.initializers import *
+
+
 class Layer():
+    _INITIALIZERS_DICT = {
+        "uniform" : UniformInitializer,
+        "glorot_normal" : GlorotNormalInitializer,
+        "glorot_uniform" : GlorotUniformInitializer,
+        "he_normal" : HeNormalInitializer,
+        "he_uniform" : HeUniformInitializer,
+        "zero": ZeroInitializer
+    }
     def __init__(self, *args, **kwargs):
         self.optimizer = None
         self.wts = {}

@@ -1,6 +1,6 @@
-from neuroboa.layers.layer import Layer
-
 import numpy as np
+
+from neuroboa.layers.layer import Layer
 
 class Padder2D(Layer):
     """

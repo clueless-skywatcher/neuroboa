@@ -1,10 +1,10 @@
-from .layer import Layer
-from ..initializers import *
-
-import numpy as np
-
 import math
 import copy
+
+from neuroboa.initializers import *
+from neuroboa.layers.layer import Layer
+
+import numpy as np
 
 class Dense(Layer):
     """
@@ -20,7 +20,7 @@ class Dense(Layer):
     Params:
     ------------------
     neurons: int 
-        The number of neurons you want to train the layer
+        The number of neurons you want to train the layer with
 
     input_shape: tuple
         Input dimension (typically the number of features in your dataset).
@@ -36,15 +36,8 @@ class Dense(Layer):
             - glorot_uniform
             - he_normal
             - he_uniform
+            - zero
     """
-
-    _INITIALIZERS_DICT = {
-        "uniform" : UniformInitializer,
-        "glorot_normal" : GlorotNormalInitializer,
-        "glorot_uniform" : GlorotUniformInitializer,
-        "he_normal" : HeNormalInitializer,
-        "he_uniform" : HeUniformInitializer
-    }
 
     def __init__(self, neurons, input_shape = None, initializer = "uniform"):
         self.neurons = neurons

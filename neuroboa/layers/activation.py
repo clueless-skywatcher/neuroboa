@@ -1,4 +1,4 @@
-from .layer import Layer
+from neuroboa.layers.layer import Layer
 
 class Activation(Layer):
     def __init__(self, func):        
