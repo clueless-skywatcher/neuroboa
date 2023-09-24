@@ -2,6 +2,7 @@
 A Deep Learning library from scratch in Python and NumPy
 
 Inspired by (Please go check out these repos as well):
+- Keras
 - Joel Grus' Neural Network Library: https://github.com/joelgrus/joelnet/
 - ML from Scratch: https://github.com/eriklindernoren/ML-From-Scratch/
 
